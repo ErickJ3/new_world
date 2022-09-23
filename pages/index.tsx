@@ -1,31 +1,11 @@
 import type { NextPage } from "next";
 import styles from "../styles/Home.module.css";
-import { Canvas, useLoader } from "@react-three/fiber";
-import { OrbitControls, Stats, useTexture } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Stats } from "@react-three/drei";
 
 import Lights from "../components/Lights";
 import Ground from "../components/Ground";
-
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-
-const Tree = () => {
-  const model = useLoader(GLTFLoader, "./models/tree.glb");
-
-  return <primitive object={model.scene} />;
-};
-
-const TextureSpheres = () => {
-  const map = useTexture("./textures/rock-texture.jpg");
-
-  return (
-    <>
-      <mesh scale={[0.5, 0.5, 0.5]} position={[0, 1, 0]} castShadow>
-        <sphereGeometry />
-        <meshStandardMaterial map={map} />
-      </mesh>
-    </>
-  );
-};
+import Trees from "../components/Trees";
 
 const Home: NextPage = () => {
   const testing = true;
@@ -35,11 +15,10 @@ const Home: NextPage = () => {
       <Canvas shadows>
         <Stats />
         <axesHelper visible={testing} args={[2]} />
-        <gridHelper args={[10, 10]} />
+        <gridHelper args={[100, 100]} />
         <OrbitControls />
         <Lights />
-        <TextureSpheres />
-        <Tree />
+        <Trees boundary={100} count={50} />
         <Ground />
       </Canvas>
     </div>
