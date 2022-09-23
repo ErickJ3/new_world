@@ -1,10 +1,18 @@
 import type { NextPage } from "next";
 import styles from "../styles/Home.module.css";
-import { Canvas } from "@react-three/fiber";
-
+import { Canvas, useLoader } from "@react-three/fiber";
 import { OrbitControls, Stats, useTexture } from "@react-three/drei";
+
 import Lights from "../components/Lights";
 import Ground from "../components/Ground";
+
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+
+const Tree = () => {
+  const model = useLoader(GLTFLoader, "./models/tree.glb");
+
+  return <primitive object={model.scene} />;
+};
 
 const TextureSpheres = () => {
   const map = useTexture("./textures/rock-texture.jpg");
@@ -31,6 +39,7 @@ const Home: NextPage = () => {
         <OrbitControls />
         <Lights />
         <TextureSpheres />
+        <Tree />
         <Ground />
       </Canvas>
     </div>
