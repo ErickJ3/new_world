@@ -12,11 +12,9 @@ import {
 import Lights from "../components/Lights";
 import Ground from "../components/Ground";
 
-const MyCube = () => {
-  const model = useGLTF("./models/cube.glb");
+const Player = () => {
+  const model = useGLTF("./models/player.glb");
   const { actions } = useAnimations(model.animations, model.scene);
-
-  console.log(model);
 
   useEffect(() => {
     actions?.defeat?.play();
@@ -36,7 +34,7 @@ const Home: NextPage = () => {
         <gridHelper args={[100, 100]} />
         <OrbitControls />
         <Lights />
-        <MyCube />
+        <Player />
         <Ground />
       </Canvas>
     </div>
