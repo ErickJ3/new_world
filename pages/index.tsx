@@ -4,6 +4,7 @@ import { Canvas } from "@react-three/fiber";
 
 import { OrbitControls, Stats, useTexture } from "@react-three/drei";
 import Lights from "../components/Lights";
+import Ground from "../components/Ground";
 
 const TextureSpheres = () => {
   const map = useTexture("./textures/rock-texture.jpg");
@@ -15,22 +16,6 @@ const TextureSpheres = () => {
         <meshStandardMaterial map={map} />
       </mesh>
     </>
-  );
-};
-
-const PlaneTexture = () => {
-  const chao_map = useTexture("./textures/chao-texture.jpg");
-
-  return (
-    <mesh rotation-x={Math.PI * -0.5} receiveShadow>
-      <planeBufferGeometry args={[10, 10]} />
-      <meshStandardMaterial
-        color={"#458745"}
-        map={chao_map}
-        roughnessMap={chao_map}
-        displacementMap={chao_map}
-      />
-    </mesh>
   );
 };
 
@@ -46,7 +31,7 @@ const Home: NextPage = () => {
         <OrbitControls />
         <Lights />
         <TextureSpheres />
-        <PlaneTexture />
+        <Ground />
       </Canvas>
     </div>
   );

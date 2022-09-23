@@ -4,7 +4,7 @@ import { useHelper } from "@react-three/drei";
 import { DirectionalLightHelper } from "three";
 
 const Lights: React.FC = () => {
-  const lightRef = useRef<THREE.DirectionalLight>();
+  const lightRef = useRef<any>();
 
   useHelper(lightRef, DirectionalLightHelper, 5, "red");
 
