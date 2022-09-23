@@ -92,6 +92,7 @@ const Trees: React.FC<props> = ({ boundary, count }) => {
       tempTrees.push({ position: { x: 0, z: 0 }, box: 1 });
     }
     updatePosition(tempTrees, boundary);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [boundary, count]);
 
   return (

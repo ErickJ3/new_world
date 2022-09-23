@@ -19,6 +19,7 @@ const useInput = () => {
     Space: "jump",
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const findKey = (key: string) => keys[key];
 
   useEffect(() => {
@@ -37,6 +38,7 @@ const useInput = () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("keyup", handleKeyUp);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return input;

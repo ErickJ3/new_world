@@ -43,6 +43,7 @@ const Player = () => {
       nextActionToPlay?.reset().fadeIn(0.2).play();
       currentAction.current = action;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [forward, backward, left, right, shift, jump]);
 
   return (
