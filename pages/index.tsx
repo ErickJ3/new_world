@@ -18,6 +18,22 @@ const TextureSpheres = () => {
   );
 };
 
+const PlaneTexture = () => {
+  const chao_map = useTexture("./textures/chao-texture.jpg");
+
+  return (
+    <mesh rotation-x={Math.PI * -0.5} receiveShadow>
+      <planeBufferGeometry args={[10, 10]} />
+      <meshStandardMaterial
+        color={"#458745"}
+        map={chao_map}
+        roughnessMap={chao_map}
+        displacementMap={chao_map}
+      />
+    </mesh>
+  );
+};
+
 const Home: NextPage = () => {
   const testing = true;
 
@@ -30,10 +46,7 @@ const Home: NextPage = () => {
         <OrbitControls />
         <Lights />
         <TextureSpheres />
-        <mesh rotation-x={Math.PI * -0.5} receiveShadow>
-          <planeBufferGeometry args={[5, 5]} />
-          <meshStandardMaterial color={"#458745"} />
-        </mesh>
+        <PlaneTexture />
       </Canvas>
     </div>
   );
