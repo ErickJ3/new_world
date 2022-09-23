@@ -3,21 +3,14 @@ import styles from "../styles/Home.module.css";
 import { Canvas } from "@react-three/fiber";
 
 import { OrbitControls, Stats, useTexture } from "@react-three/drei";
+import Lights from "../components/Lights";
 
 const TextureSpheres = () => {
   const map = useTexture("./textures/rock-texture.jpg");
 
   return (
     <>
-      <mesh scale={[1, 1, 1]} position={[-1, 0, 0]}>
-        <boxGeometry />
-        <meshStandardMaterial map={map} />
-      </mesh>
-      <mesh scale={[0.5, 0.5, 0.5]} position={[0, 0, 0]}>
-        <sphereGeometry />
-        <meshStandardMaterial map={map} />
-      </mesh>
-      <mesh scale={[0.5, 0.5, 0.5]} position={[1, 0, 0]}>
+      <mesh scale={[0.5, 0.5, 0.5]} position={[0, 1, 0]} castShadow>
         <sphereGeometry />
         <meshStandardMaterial map={map} />
       </mesh>
@@ -30,14 +23,17 @@ const Home: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <Canvas>
+      <Canvas shadows>
         <Stats />
         <axesHelper visible={testing} args={[2]} />
         <gridHelper args={[10, 10]} />
         <OrbitControls />
-        <ambientLight intensity={0.3} />
-        <directionalLight position={[0, 5, 5]} />
+        <Lights />
         <TextureSpheres />
+        <mesh rotation-x={Math.PI * -0.5} receiveShadow>
+          <planeBufferGeometry args={[5, 5]} />
+          <meshStandardMaterial color={"#458745"} />
+        </mesh>
       </Canvas>
     </div>
   );
