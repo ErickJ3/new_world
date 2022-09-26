@@ -18,12 +18,13 @@ const Home: NextPage = () => {
         <Stats />
         {/* <axesHelper visible={testing} args={[2]} />
         <gridHelper args={[100, 100]} /> */}
-        <OrbitControls />
+        {/* <OrbitControls /> */}
         <Lights />
+        {/* <OrbitControls /> */}
         <Physics>
+          <Trees boundary={100} count={50} />
           <Player />
           <Ground />
-          <Trees boundary={100} count={50} />
         </Physics>
         <Sky />
       </Canvas>
